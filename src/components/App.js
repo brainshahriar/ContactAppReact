@@ -33,12 +33,11 @@ useEffect(()=>{
       <Router>
       <Header />  
       <Switch>
-      <Route path="/add" component={Addcontact} />
-      <Route path="/" component={Contactlist} />
+      <Route path="/" exact render={(props)=>(<Contactlist{...props} contacts={contacts} getContactId={removeContactHandler}/>)} />
+      <Route path="/add" 
+      render={(props)=>(<Addcontact{...props} addContactHandler={addContactHandler} />)}
+      />
         </Switch>
-
-       {/* <Addcontact addContactHandler={addContactHandler}/>
-      <Contactlist contacts={contacts} getContactId={removeContactHandler}/> */}
       </Router>
 
     </div>
