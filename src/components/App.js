@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react';
+import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import { uuid } from 'uuidv4';
 import './App.css';
 import Header from './Header'
 import Addcontact from './Addcontact'
 import Contactlist from './Contactlist'
+
 
 function App() {
 const LOCAL_STORAGE_KEY="contacts";
@@ -25,11 +27,20 @@ useEffect(()=>{
 useEffect(()=>{
   localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(contacts));
 },[contacts]);
+
   return (
     <div className="ui container">
-      <Header />    
-      <Addcontact addContactHandler={addContactHandler}/>
-      <Contactlist contacts={contacts} getContactId={removeContactHandler}/>
+      <Router>
+      <Header />  
+      <Switch>
+      <Route path="/add" component={Addcontact} />
+      <Route path="/" component={Contactlist} />
+        </Switch>
+
+       {/* <Addcontact addContactHandler={addContactHandler}/>
+      <Contactlist contacts={contacts} getContactId={removeContactHandler}/> */}
+      </Router>
+
     </div>
   );
   
