@@ -9,10 +9,11 @@
          e.preventDefault();
          if(this.state.name==="" || this.state.email===""){
              alert("All Fields are required");
-             return
+             return;
          }
          this.props.addContactHandler(this.state);
          this.setState({name:"",email:""});
+         this.props.history.push("/");
      }
      render(){
          return(
