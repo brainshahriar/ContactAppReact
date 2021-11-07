@@ -5,6 +5,7 @@ import './App.css';
 import Header from './Header'
 import Addcontact from './Addcontact'
 import Contactlist from './Contactlist'
+import ContacDetail from './ContactDetail';
 
 
 function App() {
@@ -37,6 +38,7 @@ useEffect(()=>{
       <Route path="/add" 
       render={(props)=>(<Addcontact{...props} addContactHandler={addContactHandler} />)}
       />
+      <Route path="/contact/:id" component={ContacDetail} />
         </Switch>
       </Router>
 
